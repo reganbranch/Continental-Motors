@@ -1,24 +1,24 @@
-[debug] [2018-09-28T03:27:08.160Z] ----------------------------------------------------------------------
-[debug] [2018-09-28T03:27:08.162Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\letsg\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
-[debug] [2018-09-28T03:27:08.162Z] CLI Version:   4.2.1
-[debug] [2018-09-28T03:27:08.162Z] Platform:      win32
-[debug] [2018-09-28T03:27:08.162Z] Node Version:  v8.12.0
-[debug] [2018-09-28T03:27:08.163Z] Time:          Thu Sep 27 2018 22:27:08 GMT-0500 (Central Daylight Time)
-[debug] [2018-09-28T03:27:08.163Z] ----------------------------------------------------------------------
+[debug] [2018-10-29T04:56:14.145Z] ----------------------------------------------------------------------
+[debug] [2018-10-29T04:56:14.147Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\letsg\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2018-10-29T04:56:14.147Z] CLI Version:   4.2.1
+[debug] [2018-10-29T04:56:14.147Z] Platform:      win32
+[debug] [2018-10-29T04:56:14.147Z] Node Version:  v8.12.0
+[debug] [2018-10-29T04:56:14.148Z] Time:          Sun Oct 28 2018 23:56:14 GMT-0500 (Central Daylight Time)
+[debug] [2018-10-29T04:56:14.148Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2018-09-28T03:27:08.174Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2018-09-28T03:27:08.175Z] > authorizing via signed-in user
-[debug] [2018-09-28T03:27:08.177Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/test-a1f96  
+[debug] [2018-10-29T04:56:14.155Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-10-29T04:56:14.156Z] > authorizing via signed-in user
+[debug] [2018-10-29T04:56:14.157Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/test-a1f96  
  
-[debug] [2018-09-28T03:27:08.625Z] <<< HTTP RESPONSE 200
-[debug] [2018-09-28T03:27:08.626Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/test-a1f96  
+[debug] [2018-10-29T04:56:14.608Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-29T04:56:14.609Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/test-a1f96  
  
-[debug] [2018-09-28T03:27:08.964Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-29T04:56:14.960Z] <<< HTTP RESPONSE 200
 [info] 
-[info] === Serving from 'C:\Users\letsg\Documents\Test'...
+[info] === Serving from 'C:\Users\letsg\Documents\web_projects\Continental-Motors'...
 [info] 
-[debug] [2018-09-28T03:27:08.967Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/568090823419/clients/_:getWebAppConfig  
+[debug] [2018-10-29T04:56:14.962Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/568090823419/clients/_:getWebAppConfig  
  
-[debug] [2018-09-28T03:27:09.304Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-29T04:56:15.551Z] <<< HTTP RESPONSE 200
 [info] i  hosting[test-a1f96]: Serving hosting files from: public
 [info] +  hosting[test-a1f96]: Local server: http://localhost:5000

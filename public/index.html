@@ -1,34 +1,56 @@
 <!doctype html>
-<html>
-	
+<html lang="en">
 <head>
-	
 	<meta charset="utf-8">
-	
-	<title>Test</title>
-<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="Calculate Torque">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Continental Motors</title>
+
+	<!-- Disable tap highlight on IE -->
+  <meta name="msapplication-tap-highlight" content="no">
+  <link rel="icon" href="images/favicon.ico">
+
+	<!-- Add to homescreen for Chrome on Android -->
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="application-name" content="FriendlyEats">
+	<meta name="theme-color" content="#4285F4">
+
+	<!-- Add to homescreen for Safari on iOS -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="apple-mobile-web-app-title" content="FriendlyEats">
+	<meta name="apple-mobile-web-app-status-bar-style" content="#4285F4">
+
+	<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyBBhfNaQ1Ix0wS9YHRGk0ZzlidJDlGHc3Q",
-    authDomain: "test-a1f96.firebaseapp.com",
-    databaseURL: "https://test-a1f96.firebaseio.com",
-    projectId: "test-a1f96",
-    storageBucket: "test-a1f96.appspot.com",
-    messagingSenderId: "568090823419"
-  };
-  firebase.initializeApp(config);
-</script>
-	
+
+
+
 </head>
 
 <body>
-Hello.<br>
-	
-<script src="app.js"></script>
-	<div id="output"></div>
+Continental Motors
+<br>
+
+<form>
+ENGINE MODEL<br>
+<select name="ENGINE MODEL">
+</select><br>
+PART NAME<br>
+<select name="PART NAME">
+</select><br>
+PART SIZE<br>
+<select name="PART SIZE">
+</select><br>
+TORQUE VALUE<br>
+<input name="TORQUE VALUE" id="output"><br>
+<button type="button" id="load">Load Data</button>
+</form>
+
+<script src="Scripts/app.js"></script>
+
 </body>
 
 </html>
