@@ -18,25 +18,25 @@ var GeneralRef = db.collection("General").doc('BNS2');
 //     regions: ["west_coast", "norcal"] });
 
 
-load.addEventListener("click", function() {
-  GeneralRef.get().then(function (doc) {
-    if (doc && doc.exists) {
-      const myData = doc.data();
-      output.innerText = myData.Size;
-    }
-  }).catch(function (error) {
-    console.log("Got an error: ", error);
-  });
-});
-
-
-// db.collection("General").get().then(function(querySnapshot) {
-//     querySnapshot.forEach(function(doc) {
-//         // doc.data() is never undefined for query doc snapshots
-//         console.log(doc.id, " => ", doc.data());
-//         output.innerText = doc.data();
-//     });
+// load.addEventListener("click", function() {
+//   GeneralRef.get().then(function (doc) {
+//     if (doc && doc.exists) {
+//       const myData = doc.data();
+//       output.innerText = myData.Size;
+//     }
+//   }).catch(function (error) {
+//     console.log("Got an error: ", error);
+//   });
 // });
+
+
+db.collection("General").get().then(function(querySnapshot) {
+    querySnapshot.forEach(function(doc) {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data());
+        output.innerText = doc.data();
+    });
+});
 
 
 /*
