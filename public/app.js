@@ -1,40 +1,33 @@
-// Initialize Firebase
-var config = {
-  apiKey: "AIzaSyBBhfNaQ1Ix0wS9YHRGk0ZzlidJDlGHc3Q",
-  authDomain: "test-a1f96.firebaseapp.com",
-  databaseURL: "https://test-a1f96.firebaseio.com",
-  projectId: "test-a1f96",
-  storageBucket: "test-a1f96.appspot.com",
-  messagingSenderId: "568090823419"
-};
-
-firebase.initializeApp(config);
+console.log("connected to app");
 
 const output = document.querySelector("#output");
 
 var db = firebase.firestore();
+const firestore = firebase.firestore();
+const settings = {/* your settings... */ timestampsInSnapshots: true};
+firestore.settings(settings);
 
 var GeneralRef = db.collection("General").doc('BNS2');
-myPost.onSnapshot(doc => {
-  const data = doc.data();
-  console.log(data)
-})
+// myPost.onSnapshot(doc => {
+//   const data = doc.data();
+//   console.log(data)
+// })
 // GeneralRef.doc("SF").set({
 //     name: "San Francisco", state: "CA", country: "USA",
 //     capital: false, population: 860000,
 //     regions: ["west_coast", "norcal"] });
 
 
-// load.addEventListener("click", function() {
-//   GeneralRef.get().then(function (doc) {
-//     if (doc && doc.exists) {
-//       const myData = doc.data();
-//       output.innerText = myData.Size;
-//     }
-//   }).catch(function (error) {
-//     console.log("Got an error: ", error);
-//   });
-// });
+load.addEventListener("click", function() {
+  GeneralRef.get().then(function (doc) {
+    if (doc && doc.exists) {
+      const myData = doc.data();
+      output.innerText = myData.Size;
+    }
+  }).catch(function (error) {
+    console.log("Got an error: ", error);
+  });
+});
 
 
 // db.collection("General").get().then(function(querySnapshot) {

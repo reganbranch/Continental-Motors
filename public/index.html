@@ -22,9 +22,7 @@
 	<meta name="apple-mobile-web-app-title" content="FriendlyEats">
 	<meta name="apple-mobile-web-app-status-bar-style" content="#4285F4">
 
-	<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js"></script>
+
 
 
 
@@ -49,8 +47,22 @@ TORQUE VALUE<br>
 <button type="button" id="load">Load Data</button>
 </form>
 
-<script src="Scripts/app.js"></script>
-
+	<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.6/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBBhfNaQ1Ix0wS9YHRGk0ZzlidJDlGHc3Q",
+    authDomain: "test-a1f96.firebaseapp.com",
+    databaseURL: "https://test-a1f96.firebaseio.com",
+    projectId: "test-a1f96",
+    storageBucket: "test-a1f96.appspot.com",
+    messagingSenderId: "568090823419"
+  };
+  firebase.initializeApp(config);
+</script>
+<script src="app.js"></script>
 </body>
 
 </html>
