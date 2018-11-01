@@ -21,11 +21,7 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 	<meta name="apple-mobile-web-app-title" content="FriendlyEats">
 	<meta name="apple-mobile-web-app-status-bar-style" content="#4285F4">
-
-
-
-
-
+	<link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -34,17 +30,35 @@ Continental Motors
 
 <form>
 ENGINE MODEL<br>
-<select name="ENGINE MODEL">
+<select name="ENGINE MODEL" id="engine" autofocus>
+	<option value="" disabled selected>Select an Engine Model</option>
+	<option value="TSIO-550K">TSIO-550K</option>
 </select><br>
 PART NAME<br>
-<select name="PART NAME">
+<select name="PART NAME" id="fastener">
+	<option value="" disable selected>Select a Fastener</option>
 </select><br>
 PART SIZE<br>
-<select name="PART SIZE">
+<select name="PART SIZE" id="size">
 </select><br>
+
+<div class="field">
+	<label>OUTPUT FORMAT</label>
+  <div class="control">
+    <label class="radio">
+      <input type="radio" name="output" value="Ft-Lbs.">
+      Ft-Lbs.
+    </label>
+    <label class="radio">
+      <input type="radio" name="output" value="In-Lbs.">
+      In-Lbs.
+    </label>
+  </div>
+</div>
+
 TORQUE VALUE<br>
-<input name="TORQUE VALUE" id="output"><br>
-<button type="button" id="load">Load Data</button>
+<input name="TORQUE VALUE" id="torque" readonly><br>
+<button type="button" id="clear">Clear Filters</button>
 </form>
 
 	<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
