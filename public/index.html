@@ -21,29 +21,50 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 	<meta name="apple-mobile-web-app-title" content="FriendlyEats">
 	<meta name="apple-mobile-web-app-status-bar-style" content="#4285F4">
-	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="styles\bulma.css">
 </head>
 
-<body>
-Continental Motors
-<br>
+<body class="has-background-light">
+	<section class="section">
+		<div class="container">
+			<div class="hero">
+				<div class="hero-body">
+			<figure class="image">
+				<img src="images\continental-motors.png" alt="Continental Motors">
+			</figure>
+		</div>
+</div>
 
-<form>
-ENGINE MODEL<br>
+<div class="field">
+<label class="label">ENGINE MODEL</label>
+<div class="select is-fullwidth">
 <select name="ENGINE MODEL" id="engine" autofocus>
 	<option value="" disabled selected>Select an Engine Model</option>
 	<option value="TSIO-550K">TSIO-550K</option>
-</select><br>
-PART NAME<br>
-<select name="PART NAME" id="fastener">
-	<option value="" disable selected>Select a Fastener</option>
-</select><br>
-PART SIZE<br>
-<select name="PART SIZE" id="size">
-</select><br>
+</select>
+</div>
+</div>
 
 <div class="field">
-	<label>OUTPUT FORMAT</label>
+<label class="label">PART NAME</label>
+<div class="select is-fullwidth">
+<select name="PART NAME" id="fastener" disabled>
+	<option value="" disable selected>Select a Fastener</option>
+</select>
+</div>
+</div>
+
+<div class="field">
+<label class="label">PART SIZE</label>
+	<div class="select is-fullwidth">
+<select name="PART SIZE" id="size" disabled>
+	<option value="" disable selected>Select a Size</option>
+</select>
+</div>
+</div>
+
+<div class="field">
+	<label class="label">OUTPUT FORMAT</label>
   <div class="control">
     <label class="radio">
       <input type="radio" name="output" value="Ft-Lbs.">
@@ -56,10 +77,18 @@ PART SIZE<br>
   </div>
 </div>
 
-TORQUE VALUE<br>
-<input name="TORQUE VALUE" id="torque" readonly><br>
-<button type="button" id="clear">Clear Filters</button>
-</form>
+<div class="field">
+<label class="label">TORQUE VALUE</label>
+<div class="control">
+<input class="input" type="text" placeholder="Torque Output" id="torque" readonly>
+</div>
+</div>
+
+<div class="field">
+<div class="control">
+<button class="button is-danger is-outlined is-fullwidth" id="clear">Clear Filters</button>
+</div>
+</div>
 
 	<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js"></script>
@@ -77,6 +106,8 @@ TORQUE VALUE<br>
   firebase.initializeApp(config);
 </script>
 <script src="app.js"></script>
+</div>
+</section>
 </body>
 
 </html>

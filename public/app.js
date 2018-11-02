@@ -1,10 +1,9 @@
-console.log("connected to app");
+'use strict';
 
-const output = document.querySelector("#output");
 
 var db = firebase.firestore();
 const firestore = firebase.firestore();
-const settings = {/* your settings... */ timestampsInSnapshots: true};
+const settings = {timestampsInSnapshots: true};
 firestore.settings(settings);
 
 
@@ -13,9 +12,10 @@ const fastenerBox = document.querySelector("#fastener");
 const sizeBox = document.querySelector("#size");
 const torqueBox = document.querySelector("#torque");
 const clearButton = document.querySelector("#clear");
+var GeneralRef = db.collection("General");
 
 
-db.collection("TSIO-550K").get().then(function(querySnapshot) {
+db.collection("general").get().then(function(querySnapshot) {
     querySnapshot.forEach(function(doc) {
         // doc.data() is never undefined for query doc snapshots
         console.log(doc.id, " => ", doc.data());
@@ -26,16 +26,42 @@ db.collection("TSIO-550K").get().then(function(querySnapshot) {
 });
 
 engineBox.addEventListener("change", function() {
-  const enginechoice = engineBox.value;
+  fastenerBox.disabled = false;
+  var enginechoice = engineBox.value;
+  db.collection(enginechoice).get().then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+          // doc.data() is never undefined for query doc snapshots
+          console.log(doc.id, " => ", doc.data());
+          // engineBox.innerHTML += "<option>" + doc.dat().size + "</option>";
+          fastenerBox.innerHTML += "<option>" + doc.data().fastener + "</option>";
+
+      });
+  });
+  //run query to get
   console.log(enginechoice);
-})
+});
+
+fastenerBox.addEventListener("change", function() {
+  sizeBox.disabled = false;
+  var fastenerchoice = fastenerBox.value;
+  db.collection(enginechoice).get().then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+        console.log(doc.id, " => ", doc.data());
+        // engineBox.innerHTML += "<option>" + doc.dat().size + "</option>";
+        sizeBox.innerHTML += "<option>" + doc.data().size + "</option>";
+      });
+});
+});
 
 clearButton.addEventListener("click", function() {
   engineBox.value = "";
-})
+  fastenerBox.value = "";
+  fastenerBox.disabled = true;
+  sizeBox.value = "";
+  sizeBox.disabled = true;
+});
 
 // var TSIORef = db.collection("TSIO-550K");
-// var GeneralRef = db.collection("General");
 // var queryfast1 = TSIORef.where("fastener", "==", true);
 // var queryfast2 = GeneralRef.where("fastener", "==", true);
 // console.log(queryfast1);
