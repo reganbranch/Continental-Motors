@@ -8,49 +8,94 @@ firestore.settings(settings);
 
 
 const engineBox = document.querySelector("#engine");
+const systemBox = document.querySelector("#system");
 const fastenerBox = document.querySelector("#fastener");
 const sizeBox = document.querySelector("#size");
+const outputFT = document.querySelector("#outputFT");
+const outputIN = document.querySelector("#outputIN");
 const torqueBox = document.querySelector("#torque");
+const submitButton = document.querySelector("#submit");
 const clearButton = document.querySelector("#clear");
 var GeneralRef = db.collection("General");
 
 
-db.collection("general").get().then(function(querySnapshot) {
-    querySnapshot.forEach(function(doc) {
-        // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, " => ", doc.data());
-        // engineBox.innerHTML += "<option>" + doc.dat().size + "</option>";
-        // fastenerBox.innerHTML += "<option>" + doc.data().fastener + "</option>";
+    engineBox.addEventListener("change", function() {
+        systemBox.innerHTML = "<option value='' selected>Select a System</option>";
+        fastenerBox.innerHTML = "<option value='' selected>Select a Fastener</option>";
+        sizeBox.innerHTML = "<option value='' selected>Select a Size</option>";
+        torqueBox.value = "";
+        var enginechoice = engineBox.value;
+        console.log(enginechoice);
+        if (enginechoice == "General") {
+          console.log(enginechoice);
+          $("#hide").hide();
+          systemBox.disabled = true;
+          fastenerBox.disabled = false;
+          db.collection(enginechoice).get().then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
 
-    });
-});
+                console.log(doc.id, " => ", doc.data());
+                fastenerBox.innerHTML += "<option>" + doc.data().fastener + "</option>";
 
-engineBox.addEventListener("change", function() {
-  fastenerBox.disabled = false;
-  var enginechoice = engineBox.value;
-  db.collection(enginechoice).get().then(function(querySnapshot) {
-      querySnapshot.forEach(function(doc) {
-          // doc.data() is never undefined for query doc snapshots
-          console.log(doc.id, " => ", doc.data());
-          // engineBox.innerHTML += "<option>" + doc.dat().size + "</option>";
-          fastenerBox.innerHTML += "<option>" + doc.data().fastener + "</option>";
+            });
+          });
+        } else {
+          console.log(enginechoice);
+          $("#hide").show();
+          systemBox.disabled = false;
+          fastenerBox.disabled = true;
+          db.collection(enginechoice).get().then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+
+                // console.log(doc.id, " => ", doc.data());
+                systemBox.innerHTML += "<option>" + doc.data().system + "</option>";
+
+            });
+          });
+
+        }
 
       });
-  });
-  //run query to get
-  console.log(enginechoice);
-});
+
+
 
 fastenerBox.addEventListener("change", function() {
   sizeBox.disabled = false;
+  sizeBox.innerHTML = "<option value='' selected>Select a Size</option>";
+  torqueBox.value = "";
+  var enginechoice = engineBox.value;
   var fastenerchoice = fastenerBox.value;
-  db.collection(enginechoice).get().then(function(querySnapshot) {
+  db.collection(enginechoice).where("fastener", "==", fastenerchoice).get().then(function(querySnapshot) {
       querySnapshot.forEach(function(doc) {
         console.log(doc.id, " => ", doc.data());
-        // engineBox.innerHTML += "<option>" + doc.dat().size + "</option>";
         sizeBox.innerHTML += "<option>" + doc.data().size + "</option>";
       });
 });
+});
+
+
+submitButton.addEventListener("click", function() {
+  var enginechoice = engineBox.value;
+  var fastenerchoice = fastenerBox.value;
+  var sizechoice = sizeBox.value;
+  if(document.getElementById('outputFT').checked) {
+    db.collection(enginechoice).where("fastener", "==", fastenerchoice).where("size", "==", sizechoice).get().then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+          console.log(doc.id, " => ", doc.data());
+            torqueBox.value = doc.data().torqueFT;
+            console.log(doc.data().torqueFT);
+        });
+    });
+  }else if(document.getElementById('outputIN').checked) {
+    db.collection(enginechoice).where("fastener", "==", fastenerchoice).where("size", "==", sizechoice).get().then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+          console.log(doc.id, " => ", doc.data());
+            torqueBox.value = doc.data().torqueIN;
+            console.log(doc.data().torqueIN);
+        });
+    });
+  }
+
 });
 
 clearButton.addEventListener("click", function() {
@@ -59,89 +104,6 @@ clearButton.addEventListener("click", function() {
   fastenerBox.disabled = true;
   sizeBox.value = "";
   sizeBox.disabled = true;
-});
-
-// var TSIORef = db.collection("TSIO-550K");
-// var queryfast1 = TSIORef.where("fastener", "==", true);
-// var queryfast2 = GeneralRef.where("fastener", "==", true);
-// console.log(queryfast1);
-// var select = document.getElementById("fastener");
-//
-// for(var i = 0; i < queryfast1.length; i++) {
-//     var opt = queryfast1[i];
-//     var el = document.createElement("queryfast1");
-//     el.textContent = opt;
-//     el.value = opt;
-//     select.appendChild(el);
-// };
-
-
-// myPost.onSnapshot(doc => {
-//   const data = doc.data();
-//   console.log(data)
-// })
-
-
-
-// load.addEventListener("click", function() {
-//   GeneralRef.get().then(function (doc) {
-//     if (doc && doc.exists) {
-//       const myData = doc.data();
-//       output.innerText = myData.Size;
-//     }
-//   }).catch(function (error) {
-//     console.log("Got an error: ", error);
-//   });
-// });
-
-// var GeneralRef = db.collection("General").doc('BNS2');
-// GeneralRef.doc("SF").set({
-//     name: "San Francisco", state: "CA", country: "USA",
-//     capital: false, population: 860000,
-//     regions: ["west_coast", "norcal"] });
-
-
-
-/*
-document.addEventListener("DOMContentLoaded", event => {
-
-	var app = firebase.app();
-	console.log(app)
-	const firestore = firebase.firestore();
-  const settings = { your settings...  timestampsInSnapshots: true};
-  firestore.settings(settings);
-	var db = firebase.firestore();
-var myPart = db.collection('parts').doc('firstpart');
-
-myPart.onSnapshot(doc => {
-
-			const data = doc.data();
-			document.write( data.title + '<br>');
-			document.write( data.createdAt )
-})
+  torqueBox.value = "";
 
 });
-
-*/
-
-
-// JavaScript Document
-//firebase.firestore().enablePersistence()
-//  .catch(function(err) {
-//      if (err.code == 'failed-precondition') {
-//          // Multiple tabs open, persistence can only be enabled
-//          // in one tab at a a time.
-//          // ...
-//      } else if (err.code == 'unimplemented') {
-//          // The current browser does not support all of the
-//          // features required to enable persistence
-//          // ...
-//      }
-//  });
-
-
-//db.collection("parts").get().then((querySnapshot) => {
-//    querySnapshot.forEach((doc) => {
-//        console.log(`${doc.id} => ${doc.data()}`);
-//    });
-//});

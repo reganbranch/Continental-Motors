@@ -41,15 +41,28 @@
 <select name="ENGINE MODEL" id="engine" autofocus>
 	<option value="" disabled selected>Select an Engine Model</option>
 	<option value="TSIO-550K">TSIO-550K</option>
+	<option value="General">General</option>
+
 </select>
 </div>
 </div>
+
+
+<div class="field" id="hide">
+<label class="label">SYSTEM</label>
+<div class="select is-fullwidth">
+<select name="SYSTEM" id="system" disabled>
+	<option value="" disabled selected>Select a System</option>
+</select>
+</div>
+</div>
+
 
 <div class="field">
 <label class="label">PART NAME</label>
 <div class="select is-fullwidth">
 <select name="PART NAME" id="fastener" disabled>
-	<option value="" disable selected>Select a Fastener</option>
+	<option value="" disabled selected>Select a Fastener</option>
 </select>
 </div>
 </div>
@@ -58,7 +71,7 @@
 <label class="label">PART SIZE</label>
 	<div class="select is-fullwidth">
 <select name="PART SIZE" id="size" disabled>
-	<option value="" disable selected>Select a Size</option>
+	<option value="" disabled selected>Select a Size</option>
 </select>
 </div>
 </div>
@@ -67,11 +80,11 @@
 	<label class="label">OUTPUT FORMAT</label>
   <div class="control">
     <label class="radio">
-      <input type="radio" name="output" value="Ft-Lbs.">
+      <input type="radio" id="outputFT" name="output" value="Ft-Lbs." checked>
       Ft-Lbs.
     </label>
     <label class="radio">
-      <input type="radio" name="output" value="In-Lbs.">
+      <input type="radio" id="outputIN" name="output" value="In-Lbs.">
       In-Lbs.
     </label>
   </div>
@@ -86,7 +99,13 @@
 
 <div class="field">
 <div class="control">
-<button class="button is-danger is-outlined is-fullwidth" id="clear">Clear Filters</button>
+<button class="button is-danger is-outlined is-fullwidth" id="submit">Give Torque Values</button>
+</div>
+</div>
+
+<div class="field">
+<div class="control">
+<button class="button is-danger is-outlined is-fullwidth" id="clear">Reset Filters</button>
 </div>
 </div>
 
@@ -105,6 +124,7 @@
   };
   firebase.initializeApp(config);
 </script>
+<script src="jquery-3.3.1.min.js"></script>
 <script src="app.js"></script>
 </div>
 </section>
