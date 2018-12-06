@@ -1,6 +1,23 @@
 'use strict';
 
-
+// firebase.firestore().enablePersistence()
+// .catch(function(err) {
+//     if (err.code == 'failed-precondition') {
+//         // Multiple tabs open, persistence can only be enabled
+//         // in one tab at a a time.
+//         // ...
+//     } else if (err.code == 'unimplemented') {
+//         // The current browser does not support all of the
+//         // features required to enable persistence
+//         // ...
+//     }
+// });
+$("a#showModal").click(function() {
+  $(".modal").addClass("is-active");
+});
+$(".modal-close").click(function() {
+   $(".modal").removeClass("is-active");
+});
 var db = firebase.firestore();
 const firestore = firebase.firestore();
 const settings = {timestampsInSnapshots: true};
@@ -58,6 +75,7 @@ systemBox.addEventListener("change", function() {
   var enginechoice = engineBox.value;
   var systemchoice = systemBox.value;
   console.log(enginechoice);
+  console.log(systemchoice);
   if (enginechoice == "General") {
     sizeBox.disabled = false;
     db.collection(enginechoice).where("system", "==", systemchoice).get().then(function(querySnapshot) {
@@ -105,28 +123,44 @@ submitButton.addEventListener("click", function() {
     var systemchoice = systemBox.value;
     var fastenerchoice = fastenerBox.value;
     var sizechoice = sizeBox.value;
-
-    if(document.getElementById('outputFT').checked) {
-      db.collection(enginechoice).where("system", "==", systemchoice).where("fastener", "==", fastenerchoice).where("size", "==", sizechoice).get().then(function(querySnapshot) {
-          querySnapshot.forEach(function(doc) {
-            console.log(doc.id, " => ", doc.data());
-              torqueBox.value = doc.data().torqueFT;
-          });
-      });
-    }else if(document.getElementById('outputIN').checked) {
-      db.collection(enginechoice).where("system", "==", systemchoice).where("fastener", "==", fastenerchoice).where("size", "==", sizechoice).get().then(function(querySnapshot) {
-          querySnapshot.forEach(function(doc) {
-            console.log(doc.id, " => ", doc.data());
-              torqueBox.value = doc.data().torqueIN;
-          });
-      });
+    if (enginechoice == "General") {
+      if(document.getElementById('outputFT').checked) {
+        db.collection(enginechoice).where("system", "==", systemchoice).where("size", "==", sizechoice).get().then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+              console.log(doc.id, " => ", doc.data());
+                torqueBox.value = doc.data().torqueFT;
+            });
+        });
+      }else if(document.getElementById('outputIN').checked) {
+        db.collection(enginechoice).where("system", "==", systemchoice).where("size", "==", sizechoice).get().then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+              console.log(doc.id, " => ", doc.data());
+                torqueBox.value = doc.data().torqueIN;
+            });
+        });
+      }
+    } else {
+      if(document.getElementById('outputFT').checked) {
+        db.collection(enginechoice).where("system", "==", systemchoice).where("fastener", "==", fastenerchoice).where("size", "==", sizechoice).get().then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+              console.log(doc.id, " => ", doc.data());
+                torqueBox.value = doc.data().torqueFT + " w/ " + doc.data().lubricant;
+            });
+        });
+      }else if(document.getElementById('outputIN').checked) {
+        db.collection(enginechoice).where("system", "==", systemchoice).where("fastener", "==", fastenerchoice).where("size", "==", sizechoice).get().then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+              console.log(doc.id, " => ", doc.data());
+                torqueBox.value = doc.data().torqueIN + " w/ " + doc.data().lubricant;
+            });
+        });
+      }
     }
   }
-
-
 });
 
 clearButton.addEventListener("click", function() {
+  $("#hide2").hide();
   engineBox.value = "";
   systemBox.value = "";
   systemBox.disabled = true;

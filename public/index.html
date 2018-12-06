@@ -3,9 +3,9 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="description" content="Calculate Torque">
+	<meta name="description" content="Continental Motors Torque Buddy">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Continental Motors</title>
+	<title>Continental Motors Torque Buddy</title>
 
 	<!-- Disable tap highlight on IE -->
   <meta name="msapplication-tap-highlight" content="no">
@@ -13,27 +13,72 @@
 
 	<!-- Add to homescreen for Chrome on Android -->
 	<meta name="mobile-web-app-capable" content="yes">
-	<meta name="application-name" content="FriendlyEats">
+	<meta name="application-name" content="Continental Motors Torque Buddy">
 	<meta name="theme-color" content="#4285F4">
 
 	<!-- Add to homescreen for Safari on iOS -->
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-	<meta name="apple-mobile-web-app-title" content="FriendlyEats">
+	<meta name="apple-mobile-web-app-title" content="Continental Motors Torque Buddy">
 	<meta name="apple-mobile-web-app-status-bar-style" content="#4285F4">
 	<link rel="stylesheet" href="styles\bulma.css">
 </head>
 
 <body class="has-background-light">
-	<section class="section">
-		<div class="container">
-			<div class="hero">
-				<div class="hero-body">
-			<figure class="image">
-				<img src="images\continental-motors.png" alt="Continental Motors">
-			</figure>
+	<section class="hero is-black">
+		<div class="hero-body">
+
+		<nav class="level is-mobile">
+			<p class="level-item has-text-centered">
+				<a class="button is-black">
+				<span class="icon">
+				</span>
+			</a>
+		  </p>
+		  <p class="level-item has-text-centered">
+		    <img src="images\continental-motors.png" alt="" style="height: 42px;">
+		  </p>
+			<p class="level-item has-text-centered">
+				<a class="button is-black" id="showModal">
+				<span class="icon">
+				<i class="fas fa-question-circle"></i>
+			</a>
+		</span>
+				<div class="modal">
+  				<div class="modal-background"></div>
+  				<div class="modal-content">
+    <div class="box">
+			<div class="content">
+				<div class="title has-text-centered has-text-black">User Guide</div>
+				<ol type="1">
+					<li><p>Start by selecting the plane model that you want the torque values for such as “TSIO-550k”. If you want a general torque values, select “General” instead.</p></li>
+					<li><p>After selecting your engine model, fill out the rest of the required fields on the form.</p></li>
+					<li><p>Make sure to select the button that corresponds to the desired ouput format. Torque values can be displayed in either feet pounds or inch pounds. To switch between the two, select the opposite button and click the “Give Torque Values” button again.</p></li>
+					<li><p>Once all the required fields have been sufficiently filled, click the "Give Torque Values" button to produce the torque value corresponding to your piece.</p></li>
+					<li><p>When you are done, click the "Reset Filters" button to clear all boxes.</p></li>
+				</ol>
+			</div>
 		</div>
+  			</div>
+  <button class="modal-close is-large" aria-label="close"></button>
 </div>
+			</p>
+
+		</nav>
+
+			<!-- <nav class="navbar is-link-level is-mobile is-danger" role="navigation" aria-label="main navigation">
+			  <div class="navbar-brand">
+					<img src="images\continental-motors.png" alt="Continental Motors">
+			  </div>
+			</nav> -->
+
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="content is-small has-text-centered" style="padding-top:.6em;">
+			<i>*Leverage may affect accuracy of data supplied by application.<br><br></i>
+		</div>
 
 <div class="field">
 <label class="label">ENGINE MODEL</label>
@@ -89,7 +134,7 @@
     </label>
   </div>
 </div>
-
+<br>
 <div class="field">
 <label class="label">TORQUE VALUE</label>
 <div class="control">
@@ -97,17 +142,31 @@
 </div>
 </div>
 
-<h6 class="title is-6" id="hide2" style="color:red;">Please select an item from all categories.</h1>
+<div class="content is-small has-text-centered has-text-danger" id="hide2">
+	<i>Please select an item from all categories.<br><br></i>
+</div>
+
 
 <div class="field">
 <div class="control">
-<button class="button is-danger is-outlined is-fullwidth" id="submit">Give Torque Values</button>
+<a class="button is-danger is-outlined is-fullwidth" id="submit">
+<span class="icon">
+	<i class="fas fa-wrench"></i>
+</span>
+<span>Give Torque Values</span>
+
+</a>
 </div>
 </div>
 
 <div class="field">
 <div class="control">
-<button class="button is-danger is-outlined is-fullwidth" id="clear">Reset Filters</button>
+<a class="button is-danger is-outlined is-fullwidth" id="clear">
+	<span class="icon">
+	    <i class="fas fa-times"></i>
+	</span>
+<span>Reset Filters</span>
+</a>
 </div>
 </div>
 
@@ -125,10 +184,11 @@
     messagingSenderId: "568090823419"
   };
   firebase.initializeApp(config);
+
 </script>
 <script src="jquery-3.3.1.min.js"></script>
 <script src="app.js"></script>
-</div>
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </section>
 </body>
 
